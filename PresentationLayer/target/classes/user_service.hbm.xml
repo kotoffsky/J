@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="fr.unicaen.am.model">
+
+  <class name="UserService" table="service_user">
+    <id name="id" column="id">
+    	<generator class="increment"/>
+    </id>
+    <property name="typeService" />
+    <many-to-one name="person" class="fr.unicaen.am.model.User"/>
+    <many-to-one name="service" class="domain.service.Service"/>
+    <property name="startDate" />
+    <property name="endDate" />
+  </class>
+
+</hibernate-mapping>

@@ -13,32 +13,40 @@ import bussiness.service_layer.IUser;
 import fr.unicaen.am.model.User;
 
 /**
- * A class for representing persons, with a name, a first name, and an email address.
- * @author Amani LAHBIB and mykyta KHARAIM, Caen Basse-Normandie University, France
+ * A class for representing persons, with a name, a first name, and an email
+ * address.
+ * 
+ * @author Amani LAHBIB and mykyta KHARAIM, Caen Basse-Normandie University,
+ *         France
  */
 
 public class SessionManager {
 
-    /**
-     * Loads the informations of logged user into the HTTP session under key "user".
-     * Does nothing if user infos are already loaded.
-     * @param session The HTTP session into which logged user must be loaded
-     * @param userService A service object for user manager
-     */
-    public static void initializeSession (HttpSession session,IUser userService) {
-        if (session.getAttribute("user")==null) {
-        	// check if user is logged in
-    		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-    		if (!(auth instanceof AnonymousAuthenticationToken)) {
-    			UserDetails userDetail = (UserDetails) auth.getPrincipal();
-    			User user = (User) userService.getPerson(userDetail.getUsername());
-    			session.setAttribute("user",user);
-    			double age = Math.floor((new Date().getTime()- user.getBirth().getTime())/365.25);
-    			session.setAttribute("age",age);
+	/**
+	 * Loads the informations of logged user into the HTTP session under key
+	 * "user". Does nothing if user infos are already loaded.
+	 * 
+	 * @param session
+	 *            The HTTP session into which logged user must be loaded
+	 * @param userService
+	 *            A service object for user manager
+	 */
+	public static void initializeSession(HttpSession session, IUser userService) {
+		if (session.getAttribute("user") == null) {
+			// check if user is logged in
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			if (!(auth instanceof AnonymousAuthenticationToken)) {
+				UserDetails userDetail = (UserDetails) auth.getPrincipal();
+				User user = (User) userService.getPerson(userDetail.getUsername());
+				session.setAttribute("user", user);
+				if (user.getBirth() != null) {
+					int age = (int) Math.floor((new Date().getTime() - user.getBirth().getTime()) / (1000 * 60 * 60 * 24 * 365.25));
+					session.setAttribute("age", age);
+				}
 
-    		}
-            
-        }
-    }
+			}
 
-} 
+		}
+	}
+
+}

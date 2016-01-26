@@ -40,7 +40,6 @@
 
 				</div>
 				<c:if test="${pageContext.request.userPrincipal.name != null}">
-				<div>${age}</div>
 					<div class="pull-right">
 
 						<ul class="nav navbar-nav navbar-right pull-right">

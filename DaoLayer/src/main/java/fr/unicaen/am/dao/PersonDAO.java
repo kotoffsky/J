@@ -2,10 +2,7 @@ package fr.unicaen.am.dao;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.HashSet;
-import java.util.Set;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -53,11 +50,11 @@ public class PersonDAO extends SQLPersonDAO{
 	
 	@Override
 	public void create(Person p, String password) throws Exception{
-		User user = new User(p.getName(),p.getFirstName(),p.getEmail());
-		user.setPassword(password);
-		user.setEnabled(true);
-		sessionFactory.getCurrentSession().save(user);
-		sessionFactory.getCurrentSession().save(new UserRole(user,"ROLE_USER"));
+		//User user = new User(p.getName(),p.getFirstName(),p.getEmail());
+		//user.setPassword(password);
+		//user.setEnabled(true);
+		sessionFactory.getCurrentSession().save((User)p);
+		sessionFactory.getCurrentSession().save(new UserRole((User)p,"ROLE_USER"));
 	}
 
 }

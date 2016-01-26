@@ -1,58 +1,72 @@
 package model;
 
-import java.math.BigDecimal;
+import java.io.Serializable;
 import java.util.Date;
-import java.util.Map;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.NumberFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
-import org.springframework.format.annotation.NumberFormat.Style;
 
-public class UserBean {
+
+/**
+ * 
+ * @author lahbib
+ * This class is a domain object acting as a backing bean to the user inscription form holding its relative data provided via form submission. 
+ * We will annotate the properties(with validation annotations) which we want to be validated.
+ *
+ */
+public class UserBean implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@NotEmpty
-	private String name;
+	@Size(min=3, max=30)
+	private String lastname;
 	
-	@Min(21)
-	private int age;
-
-	@DateTimeFormat(iso=ISO.DATE)
+	@NotEmpty
+	@Size(min=3, max=30)
+	private String firstname;
+	
+	/*@DateTimeFormat(iso=ISO.DATE)
 	@Past
-	private Date birthDate;
+	@NotEmpty*/
+	private Date birthDate; 
 
+	@NotEmpty
 	private String phone;
-
-	@NumberFormat(pattern="$###,###.00")
-	private BigDecimal currency;
-
-	@NumberFormat(style=Style.PERCENT)
-	private BigDecimal percent;
 	
+	private String type;
 	
-	private String inquiryDetails;
+	@NotEmpty
+	@Size(min=3, max=20)
+	private String pwd;
+ 
+    @NotEmpty
+    private String gender;
+ 
+    @Email @NotEmpty
+    private String email;
+ 
+    @NotEmpty
+    private String adress;
+ 
+    @NotEmpty
+    private String country;
 	
-	private boolean subscribeNewsletter;
-	
-	private Map<String, String> additionalInfo;
+	private String city;
 
     public String getName() {
-		return name;
+		return lastname;
 	}
 
 	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
+		this.lastname = name;
 	}
 
 	public Date getBirthDate() {
@@ -71,73 +85,78 @@ public class UserBean {
 		this.phone = phone;
 	}
 
-	public BigDecimal getCurrency() {
-		return currency;
+	public String getFirstname() {
+		return firstname;
 	}
 
-	public void setCurrency(BigDecimal currency) {
-		this.currency = currency;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
-	public BigDecimal getPercent() {
-		return percent;
+	public String getGender() {
+		return gender;
 	}
 
-	public void setPercent(BigDecimal percent) {
-		this.percent = percent;
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
-	public String getInquiryDetails() {
-		return inquiryDetails;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setInquiryDetails(String inquiryDetails) {
-		this.inquiryDetails = inquiryDetails;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public boolean isSubscribeNewsletter() {
-		return subscribeNewsletter;
+	public String getAdress() {
+		return adress;
 	}
 
-	public void setSubscribeNewsletter(boolean subscribeNewsletter) {
-		this.subscribeNewsletter = subscribeNewsletter;
+	public void setAdress(String adress) {
+		this.adress = adress;
 	}
 
-	public Map<String, String> getAdditionalInfo() {
-		return additionalInfo;
+	public String getCountry() {
+		return country;
 	}
 
-	public void setAdditionalInfo(Map<String, String> additionalInfo) {
-		this.additionalInfo = additionalInfo;
+	public void setCountry(String country) {
+		this.country = country;
 	}
 
-	public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("properties name=");
-        if (name != null) {
-        	sb.append("'").append(name).append("', ");
-        } else {
-        	sb.append(name).append(", ");
-        }
-        sb.append("age=").append(age).append(", ");
-        sb.append("birthDate=").append(birthDate).append(", ");
-        sb.append("phone=");
-        if (phone != null) {
-        	sb.append("'").append(phone).append("', ");
-        } else {
-        	sb.append(phone).append(", ");
-        }
-        sb.append("currency=").append(currency).append(", ");
-        sb.append("percent=").append(percent).append(", ");
-        sb.append("inquiryDetails=");
-        if (inquiryDetails != null) {
-        	sb.append("'").append(inquiryDetails).append("', ");
-        } else {
-        	sb.append(inquiryDetails).append(", ");
-        }
-        sb.append("subscribeNewsletter=").append(subscribeNewsletter).append(", ");
-        sb.append("additionalInfo=").append(additionalInfo);
-        return sb.toString();
-    }
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getPwd() {
+		return pwd;
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	
 
 }

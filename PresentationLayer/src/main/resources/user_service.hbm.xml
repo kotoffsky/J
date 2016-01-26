@@ -15,6 +15,7 @@
     <many-to-one name="service" class="domain.service.Service"/>
     <property name="startDate" />
     <property name="endDate" />
+    <property name="creationDate" />
   </class>
 
 </hibernate-mapping>

@@ -11,6 +11,7 @@ public class User extends Person{
 	private String password;
 	private String adress;
 	private String phone;
+	private String phoneType;
 	private String gender;
 	private Date birth;
 	private String ville;
@@ -96,6 +97,14 @@ public class User extends Person{
 
 	public void setUserRole(Set<UserRole> userRole) {
 		this.userRole = userRole;
+	}
+
+	public String getPhoneType() {
+		return phoneType;
+	}
+
+	public void setPhoneType(String phoneType) {
+		this.phoneType = phoneType;
 	}
 	
 	

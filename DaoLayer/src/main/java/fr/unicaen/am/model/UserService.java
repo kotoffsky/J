@@ -12,13 +12,14 @@ public class UserService {
 	private Service service;
 	private Date startDate;
 	private Date endDate;
-	private String typeService;
+	private TypeService typeService;
+	private Date creationDate;
 
 	public UserService() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public UserService(User person, Service service, Date startDate, Date endDate, String typeService) {
+	public UserService(User person, Service service, Date startDate, Date endDate, TypeService typeService) {
 		super();
 		this.person = person;
 		this.service = service;
@@ -69,12 +70,20 @@ public class UserService {
 		this.endDate = endDate;
 	}
 
-	public String getTypeService() {
+	public TypeService getTypeService() {
 		return typeService;
 	}
 
-	public void setTypeService(String typeService) {
+	public void setTypeService(TypeService typeService) {
 		this.typeService = typeService;
+	}
+
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
 	}
 
 	@Override

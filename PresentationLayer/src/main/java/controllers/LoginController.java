@@ -1,19 +1,27 @@
 package controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.LockedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import bussiness.service_layer.IUser;
+import fr.unicaen.am.model.User;
+import model.UserBean;
 
 @Controller
 public class LoginController {
@@ -68,9 +76,36 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value = "/inscription", method = RequestMethod.GET)
-	public String signup() {
+	public String signup(ModelMap model) {
+		UserBean user = new UserBean();
+        model.addAttribute("user", user);
 		return "inscription";
 	}
+	
+	@RequestMapping(value = "/inscription", method = RequestMethod.POST)
+	 public String saveRegistration(@Valid UserBean user, BindingResult result, ModelMap model){
+		 
+        if(result.hasErrors()) {
+                return "inscription";
+        }
+ 
+        User u = new User();
+        u.setName(user.getName());
+        u.setFirstName(user.getFirstname());
+        u.setEmail(user.getEmail());
+        u.setBirth(user.getBirthDate());
+        u.setAdress(user.getAdress());
+        u.setEnabled(true);
+        u.setGender(user.getGender());
+        u.setPassword(user.getPwd());
+        u.setPays(user.getCountry());
+        u.setVille(user.getCity());
+        u.setPhone(user.getPhone());
+        u.setPhoneType(user.getType());
+        userService.addUser(u, user.getPwd());
+        model.addAttribute("success", "Dear "+ user.getFirstname()+" , your Registration completed successfully");
+        return "redirect:/login";
+    }
 	
 	
 

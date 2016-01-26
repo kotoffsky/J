@@ -40,8 +40,7 @@ public class SessionManager {
 				User user = (User) userService.getPerson(userDetail.getUsername());
 				session.setAttribute("user", user);
 				if (user.getBirth() != null) {
-					int age = (int) Math.floor((new Date().getTime() - user.getBirth().getTime()) / (1000 * 60 * 60 * 24 * 365.25));
-					session.setAttribute("age", age);
+					session.setAttribute("age", Utils.getUserAge(user.getBirth()));
 				}
 
 			}

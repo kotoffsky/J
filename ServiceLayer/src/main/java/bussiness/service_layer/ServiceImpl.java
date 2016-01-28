@@ -1,6 +1,7 @@
 package bussiness.service_layer;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -90,6 +91,16 @@ public class ServiceImpl implements IService{
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
+		}
+	}
+
+	@Override
+	public List<String> getServicesLabel() {
+		try {
+			return serviceDAO.retrieveServicesLabel();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
 		}
 	}
 

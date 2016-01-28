@@ -1,6 +1,7 @@
 package fr.unicaen.am.dao;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -62,6 +63,12 @@ public class ServiceDAO implements IServiceDAO{
 		if (service != null)
 			getCurrentSession().delete(service);
 		
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<String> retrieveServicesLabel() {
+		return getCurrentSession().createQuery("select title from Service").list();
 	}
 	
 }

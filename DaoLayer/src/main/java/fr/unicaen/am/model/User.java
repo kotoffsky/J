@@ -1,12 +1,13 @@
 package fr.unicaen.am.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 import domain.person.Person;
 
-public class User extends Person{
+public class User extends Person implements Serializable{
 
 	private String password;
 	private String adress;
@@ -16,8 +17,9 @@ public class User extends Person{
 	private Date birth;
 	private String ville;
 	private String pays;
-	private boolean enabled;
+	private Boolean enabled;
 	private Set<UserRole> userRole = new HashSet<UserRole>(0);
+	
 	
 	public User() {
 		super("", "", "");
@@ -83,11 +85,11 @@ public class User extends Person{
 		this.pays = pays;
 	}
 
-	public boolean isEnabled() {
+	public Boolean isEnabled() {
 		return enabled;
 	}
 
-	public void setEnabled(boolean enabled) {
+	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
 	}
 

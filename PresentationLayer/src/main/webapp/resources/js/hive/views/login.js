@@ -10,7 +10,7 @@ define(function (require) {
 
     return Backbone.View.extend({
         render: function () {
-            this.$el.attr('class', ' background-dark')
+            //this.$el.attr('class', ' background-dark')
             this.$el.html(template());
             return this;
         },

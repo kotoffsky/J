@@ -1,8 +1,10 @@
 package bussiness.service_layer;
 
 import java.util.Collection;
+import java.util.List;
 
 import domain.service.Service;
+import fr.unicaen.am.model.User;
 import fr.unicaen.am.model.UserService;
 
 public interface IUserService {
@@ -16,9 +18,17 @@ public interface IUserService {
 
 	void deleteUserService(long id);
 
-	Collection<Service> getServices(String email);
+	Collection<UserService> getUserServices(User user);
 
-	Collection<Service> getUserServices(String email);
+	Collection<UserService> getUserServicesOffert(String email);
+
+	Collection<UserService> getUserServicesDemande(String email);
+
+	void removeOldServices();
+
+	List<Service> getServicesDemande(String email);
+
+	List<User> getPersonsOfferingService(Service s);
 
 
 }

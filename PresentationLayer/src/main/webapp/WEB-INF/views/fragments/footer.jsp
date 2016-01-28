@@ -11,6 +11,7 @@
 <script src="<c:url value="/resources/js/settings.js"/>"></script>
 <script
 	src="<c:url value="/resources/lib/bootstrap-select/dist/js/bootstrap-select.min.js" />"></script>
+<script src="<c:url value="/resources/js/lib/jquery-ui.js"/>"></script>
 <script src="<c:url value="/resources/lib/select2/select2.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/moment/moment.js"/>"></script>
 <script
@@ -18,6 +19,8 @@
 <script
 	src="<c:url value="/resources/lib/parsleyjs/dist/parsley.min.js"/>"></script>
 <script src="<c:url value="/resources/js/forms-account.js" />"></script>
+<script src="<c:url value="/resources/lib/magnific-popup/dist/jquery.magnific-popup.min.js"/>"></script>
+<script src="<c:url value="/resources/js/component-gallery.js"/>"></script>
 
 </body>
 </html>

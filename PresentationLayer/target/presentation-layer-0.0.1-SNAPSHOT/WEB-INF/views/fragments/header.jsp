@@ -21,7 +21,8 @@
 -->
 <link href="<c:url value="/resources/css/application.min.css" />"
 	rel="stylesheet">
-<!--<link href="<c:url value="/resources/css/hive.css" />" rel="stylesheet">
+	<link href="<c:url value="/resources/css/jquery-ui.css" />" rel="stylesheet">
+<!--
  <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet"> -->
 </head>

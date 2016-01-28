@@ -1,8 +1,10 @@
 package fr.unicaen.am.model;
 
+import java.io.Serializable;
+
 import domain.person.Person;
 
-public class UserRole {
+public class UserRole implements Serializable{
 	private Integer userRoleId;
 	private User user;
 	private String role;

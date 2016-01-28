@@ -1,12 +1,16 @@
 package fr.unicaen.am.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-import domain.person.Person;
 import domain.service.Service;
 
-public class UserService {
+public class UserService implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long id;
 	private User person;
 	private Service service;
@@ -30,7 +34,11 @@ public class UserService {
 
 
 
-	public Person getPerson() {
+	public UserService(Service s) {
+		service = s;
+	}
+
+	public User getPerson() {
 		return person;
 	}
 

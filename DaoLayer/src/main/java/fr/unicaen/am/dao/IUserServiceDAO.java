@@ -1,8 +1,10 @@
 package fr.unicaen.am.dao;
 
 import java.util.Collection;
+import java.util.List;
 
 import domain.service.Service;
+import fr.unicaen.am.model.User;
 import fr.unicaen.am.model.UserService;
 
 public interface IUserServiceDAO {
@@ -17,8 +19,16 @@ public interface IUserServiceDAO {
 
 	void deleteUserService(long id) throws Exception;
 
-	Collection<Service> retrieveServices(String email) throws Exception;
+	Collection<UserService> retrieveUserServices(User user) throws Exception;
 
-	Collection<Service> retrieveUserServices(String email) throws Exception;
+	Collection<UserService> retrieveUserServicesOffert(String email) throws Exception;
+
+	Collection<UserService> retrieveUserServicesDemande(String email) throws Exception;
+
+	void deleteOldServices() throws Exception;
+
+	List<domain.service.Service> getServicesDemande(String email);
+
+	List<User> getPersonsOfferingService(domain.service.Service s);
 
 }

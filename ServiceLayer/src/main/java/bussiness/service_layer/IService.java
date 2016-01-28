@@ -1,6 +1,7 @@
 package bussiness.service_layer;
 
 import java.util.Collection;
+import java.util.List;
 
 import domain.service.Service;
 
@@ -13,4 +14,5 @@ public interface IService {
 	Collection<Service> getCategoryServices (String category);
 	Collection<String> getAllCategories();
 	boolean removeService(long id);
+	List<String> getServicesLabel();
 }

@@ -1,5 +1,7 @@
 package fr.unicaen.am.model;
 
-public enum TypeService {
+import java.io.Serializable;
+
+public enum TypeService implements Serializable{
 	OFFRE, DEMANDE
 }

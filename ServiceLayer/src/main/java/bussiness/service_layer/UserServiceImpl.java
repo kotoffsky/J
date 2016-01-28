@@ -1,12 +1,14 @@
 package bussiness.service_layer;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.unicaen.am.dao.IUserServiceDAO;
+import fr.unicaen.am.model.User;
 import fr.unicaen.am.model.UserService;
 
 @Service
@@ -67,11 +69,22 @@ public class UserServiceImpl implements IUserService {
 		}
 		
 	}
-
+	
 	@Override
-	public Collection<domain.service.Service> getServices(String email){
+	public void removeOldServices(){
 		try {
-			return dao.retrieveServices(email);
+			dao.deleteOldServices();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	
+	@Override
+	public Collection<UserService> getUserServices(User user){
+		try {
+			return dao.retrieveUserServices(user);
 		} catch (Exception e) {
 			
 			e.printStackTrace();
@@ -81,9 +94,9 @@ public class UserServiceImpl implements IUserService {
 	}
 	
 	@Override
-	public Collection<domain.service.Service> getUserServices(String email){
+	public Collection<UserService> getUserServicesDemande(String email){
 		try {
-			return dao.retrieveUserServices(email);
+			return dao.retrieveUserServicesDemande(email);
 		} catch (Exception e) {
 			
 			e.printStackTrace();
@@ -91,5 +104,46 @@ public class UserServiceImpl implements IUserService {
 		}
 		
 	}
+	
+	@Override
+	public Collection<UserService> getUserServicesOffert(String email){
+		try {
+			return dao.retrieveUserServicesOffert(email);
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
+
+	@Override
+	public List<domain.service.Service> getServicesDemande(String email) {
+		try {
+			List<domain.service.Service> ls = dao.getServicesDemande(email);
+			System.out.println(ls.toString());
+			return ls;
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public List<User> getPersonsOfferingService(domain.service.Service s) {
+		try {
+			//System.out.println(s.toString());
+			List<User> lu = dao.getPersonsOfferingService(s);
+			System.out.println(lu.toString());
+			return lu;
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	
 
 }

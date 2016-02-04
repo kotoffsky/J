@@ -2,7 +2,9 @@ package fr.unicaen.am.dao;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -11,6 +13,8 @@ import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
 import domain.person.Person;
 import domain.person.SQLPersonDAO;
+import domain.service.Service;
+import fr.unicaen.am.model.TypeService;
 import fr.unicaen.am.model.User;
 import fr.unicaen.am.model.UserRole;
 
@@ -49,10 +53,19 @@ public class PersonDAO extends SQLPersonDAO{
 	}
 	
 	@Override
+	public void delete(String email){
+		Query q = sessionFactory.getCurrentSession().createQuery(
+				"delete from UserRole ur where ur.user.email=:email");
+		q.setParameter("email", email);
+		q.executeUpdate();
+		q = sessionFactory.getCurrentSession().createQuery(
+				"delete from User u where u.email=:email");
+		q.setParameter("email", email);
+		q.executeUpdate();
+	}
+	
+	@Override
 	public void create(Person p, String password) throws Exception{
-		//User user = new User(p.getName(),p.getFirstName(),p.getEmail());
-		//user.setPassword(password);
-		//user.setEnabled(true);
 		sessionFactory.getCurrentSession().save((User)p);
 		sessionFactory.getCurrentSession().save(new UserRole((User)p,"ROLE_USER"));
 	}

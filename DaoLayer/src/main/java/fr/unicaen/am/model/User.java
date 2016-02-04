@@ -108,6 +108,15 @@ public class User extends Person implements Serializable{
 	public void setPhoneType(String phoneType) {
 		this.phoneType = phoneType;
 	}
+
+	@Override
+	public String toString() {
+		return "adress=" + adress + ", phone=" + phone + ", phoneType=" + phoneType + ", gender=" + gender
+				+ ", birth=" + birth + ", ville=" + ville + ", pays=" + pays + ", name=" + name + ", firstName="
+				+ firstName + ", email=" + email;
+	}
+
+	
 	
 	
 	

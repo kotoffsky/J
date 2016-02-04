@@ -1,9 +1,6 @@
-$(document)
-		.ready(
-				function() {
+$(document).ready(function() {
 					// Custom autocomplete instance.
-					$
-							.widget(
+					$.widget(
 									"app.autocomplete",
 									$.ui.autocomplete,
 									{
@@ -37,35 +34,39 @@ $(document)
 
 									});
 
-					/*
-					 * $( "#first-name" ).autocomplete({ source: 'services.html'
-					 * });
-					 */
-
 				});
 
-$.ajax({
-	"type" : "GET",
-	"contentType" : "text/html;charset=utf-8",
-	"url" : "services.html",
-	"success" : function(resp) {
-		$("#title").autocomplete({
-			highlightClass : "bold-text",
-			minLength : 2,
-			source : resp.substr(1,resp.length-2).split(",")
+var data;
+$("#search").keypress(function() {
+	if (!data)
+		$.ajax({
+			"type" : "GET",
+			"contentType" : "text/html;charset=utf-8",
+			"url" : "services.html",
+			"success" : function(resp) {
+				data = resp.substr(1, resp.length - 2).split(",")
+				$("#search").autocomplete({
+					highlightClass : "bold-text",
+					minLength : 2,
+					source : data
+				});
+			}
 		});
-	}
 });
 
-$.ajax({
-	"type" : "GET",
-	"contentType" : "text/html;charset=utf-8",
-	"url" : "categories.html",
-	"success" : function(resp) {
-		$("#categorie").autocomplete({
-			highlightClass : "bold-text",
-			minLength : 1,
-			source : resp.substr(1,resp.length-2).split(",")
+$("#categorie").keypress(function() {
+	if (!data)
+		$.ajax({
+			"type" : "GET",
+			"contentType" : "text/html;charset=utf-8",
+			"url" : "categories.html",
+			"success" : function(resp) {
+				data = resp.substr(1, resp.length - 2).split(",");
+				$("#categorie").autocomplete({
+					highlightClass : "bold-text",
+					minLength : 1,
+					source : data
+				});
+			}
 		});
-	}
 });

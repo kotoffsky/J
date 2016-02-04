@@ -33,9 +33,6 @@ public class UserBean implements Serializable{
 	@Size(min=3, max=30)
 	private String firstname;
 	
-	/*@DateTimeFormat(iso=ISO.DATE)
-	@Past
-	@NotEmpty*/
 	private Date birthDate; 
 
 	@NotEmpty

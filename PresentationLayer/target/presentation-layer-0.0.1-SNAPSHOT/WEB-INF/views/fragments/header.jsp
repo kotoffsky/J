@@ -21,29 +21,35 @@
 -->
 <link href="<c:url value="/resources/css/application.min.css" />"
 	rel="stylesheet">
-	<link href="<c:url value="/resources/css/jquery-ui.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/jquery-ui.css" />"
+	rel="stylesheet">
 <!--
  <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet"> -->
 </head>
-<body class="">
+<body>
 	<div class="container">
+		<div class="logo pull-left">
+
+			<h4>
+				<a href="${pageContext.request.contextPath}/"> <span
+					class="fa fa-home"></span>&nbsp <strong>Echange de
+						Services entre particuliers </strong><small> plateforme de
+						rencontre et d'entraide à but non lucratif</small>
+				</a>
+			</h4>
+
+		</div>
 		<header class="page-header">
 			<div class="navbar">
-				<div class="logo pull-left">
 
-					<h4>
-						<a href="${pageContext.request.contextPath}/"> <span class="fa fa-home"></span>&nbsp
-							<strong>Echange de Services entre particuliers </strong><small>
-								plateforme de rencontre et d'entraide à but non lucratif</small>
-						</a>
-					</h4>
-
-				</div>
 				<c:if test="${pageContext.request.userPrincipal.name != null}">
 					<div class="pull-right">
 
 						<ul class="nav navbar-nav navbar-right pull-right">
+							<li class="visible-phone-landscape"><a href="#"
+								id="search-toggle"> <i class="fa fa-search"></i>
+							</a></li>
 							<li class="dropdown"><a href="#" title="8 support tickets"
 								class="dropdown-toggle" data-toggle="dropdown"> <i
 									class="fa fa-group"></i> <span class="count">8</span>
@@ -97,7 +103,8 @@
 							</a>
 								<ul id="account-menu" class="dropdown-menu account" role="menu">
 									<li role="presentation" class="account-picture"><img
-										src="img/2.jpg" alt=""> Philip Daineka</li>
+										src="<c:url value="/resources/img/avatars/1.png" />" alt="">
+										${user.name} ${user.firstName}</li>
 									<li role="presentation"><a href="form_account.html"
 										class="link"> <i class="fa fa-user"></i> Profile
 									</a></li>
@@ -115,7 +122,6 @@
 							<li class="hidden-xs"><a href="j_spring_security_logout"><i
 									class="fa fa-sign-out"></i></a></li>
 						</ul>
-
 					</div>
 				</c:if>
 			</div>

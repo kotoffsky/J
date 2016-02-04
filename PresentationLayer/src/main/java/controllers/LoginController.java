@@ -1,8 +1,5 @@
 package controllers;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -13,7 +10,6 @@ import org.springframework.security.authentication.LockedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import bussiness.service_layer.IUser;
 import fr.unicaen.am.model.User;
 import model.UserBean;
+import utils.SessionManager;
 
 @Controller
 public class LoginController {
@@ -37,7 +34,7 @@ public class LoginController {
 		if (error != null) {
 			model.addObject("error", getErrorMessage(request, "SPRING_SECURITY_LAST_EXCEPTION"));
 		}
-
+		SessionManager.initializeSession(request.getSession(), userService);
 		model.setViewName("index");
 
 		return model;
@@ -78,7 +75,7 @@ public class LoginController {
 	@RequestMapping(value = "/inscription", method = RequestMethod.GET)
 	public String signup(ModelMap model) {
 		UserBean user = new UserBean();
-        model.addAttribute("user", user);
+        model.addAttribute("userBean", user);
 		return "inscription";
 	}
 	

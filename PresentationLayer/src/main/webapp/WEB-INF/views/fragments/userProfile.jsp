@@ -1,8 +1,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div class="row">
 	<div class="col-sm-4">
 		<div class="text-align-center">
-			<img class="img-circle" src="<c:url value="/resources/img/avatars/adult_1_240x240.png" />"
+			<img class="img-circle" src="<c:url value="/resources/img/avatars/1.png" />"
 				style="height: 105px;">
 		</div>
 	</div>

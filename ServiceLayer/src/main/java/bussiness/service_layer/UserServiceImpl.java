@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.unicaen.am.dao.IUserServiceDAO;
+import fr.unicaen.am.model.Comment;
+import fr.unicaen.am.model.Cycle;
 import fr.unicaen.am.model.User;
 import fr.unicaen.am.model.UserService;
 
@@ -17,6 +19,13 @@ public class UserServiceImpl implements IUserService {
 	
 	@Autowired
 	private IUserServiceDAO dao;
+	
+	@Autowired
+	private ICommentService commentService;
+	
+	@Autowired
+	private ICycleService cycleService;
+	
 
 	@Override
 	public void addUserService(UserService service){
@@ -63,7 +72,14 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public void deleteUserService(long id){
 		try {
+			
+			UserService us = dao.retrieveUserService(id);
+			for (Cycle cycle : cycleService.getByUserServices(us))
+				cycleService.removeCycle(cycle.getId());
+			for(Comment comment: commentService.getMessagesByUserService(us))
+				commentService.removeMessage(comment.getId());
 			dao.deleteUserService(id);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

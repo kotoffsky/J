@@ -17,7 +17,7 @@
 						</h4>
 					</header>
 					<div class="body">
-						<form:form id="user-form" modelAttribute="user" class="form-horizontal form-label-left"
+						<form:form id="user-form" modelAttribute="userBean" class="form-horizontal form-label-left"
 							novalidate="novalidate" method="post"
 							data-parsley-priority-enabled="false"
 							data-parsley-excluded="input[name=gender]">

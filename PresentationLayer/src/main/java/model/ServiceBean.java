@@ -33,13 +33,9 @@ public class ServiceBean implements Serializable{
 	@Size(min=3, max=30)
 	private String title;
 	
-	/*@DateTimeFormat(iso=ISO.DATE)
-	@Past
-	@NotEmpty*/
 	private Date debut; 
 	private Date fin; 
 
-	@NotEmpty
 	@Size(min=3, max=100)
 	private String desc;
 

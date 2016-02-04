@@ -8,6 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.person.IPersonDAO;
 import domain.person.Person;
+import fr.unicaen.am.model.Comment;
+import fr.unicaen.am.model.Cycle;
+import fr.unicaen.am.model.User;
+import fr.unicaen.am.model.UserService;
 
 @Service
 @Transactional
@@ -15,7 +19,16 @@ public class UserImpl implements IUser{
 	
 	@Autowired
 	private IPersonDAO personDAO;
+	
+	@Autowired
+	private IUserService userService;
+	
+	@Autowired
+	private ICycleService cycleService;
 
+	@Autowired
+	ICommentService commentService;
+	
 	@Override
 	public boolean addUser(Person person, String password) {
 		try {
@@ -104,7 +117,19 @@ public class UserImpl implements IUser{
 	@Override
 	public boolean deleteUser(String email) {
 		try {
-			personDAO.delete(email);
+			User user = (User)getPerson(email);
+			for (Cycle c : cycleService.getByDemandeur(user))
+				cycleService.removeCycle(c.getId());
+			for (Cycle c : cycleService.getByOffrant(user))
+				cycleService.removeCycle(c.getId());
+			for(Comment comment: commentService.getMessagesBySender(user))
+				commentService.removeMessage(comment.getId());
+			for(UserService us : userService.getUserServicesDemande(user.getEmail()))
+				userService.deleteUserService(us.getId());
+			for(UserService us : userService.getUserServicesOffert(user.getEmail()))
+				userService.deleteUserService(us.getId());
+			
+			//personDAO.delete(email);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

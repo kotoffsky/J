@@ -2,6 +2,7 @@ package fr.unicaen.am.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 import domain.service.Service;
 
@@ -18,7 +19,7 @@ public class UserService implements Serializable{
 	private Date endDate;
 	private TypeService typeService;
 	private Date creationDate;
-
+	
 	public UserService() {
 		// TODO Auto-generated constructor stub
 	}
@@ -30,6 +31,7 @@ public class UserService implements Serializable{
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.typeService = typeService;
+		
 	}
 
 
@@ -93,7 +95,8 @@ public class UserService implements Serializable{
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-
+	
+	
 	@Override
 	public String toString() {
 		return "UserService [id=" + id + ", person=" + person.toString() + ", service=" + service + ", startDate="

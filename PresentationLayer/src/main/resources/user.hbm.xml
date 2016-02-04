@@ -34,7 +34,7 @@
         <property name="adress" type="string">
             <column name="adress" length="60" not-null="true" />
         </property>
-        <set name="userRole" table="user_roles" inverse="true" lazy="true" fetch="select">
+        <set name="userRole" table="user_roles"  cascade="delete" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="email" length="45" not-null="true" />
             </key>

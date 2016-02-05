@@ -11,6 +11,11 @@ import org.springframework.stereotype.Repository;
 import domain.service.IServiceDAO;
 import domain.service.Service;
 
+/**
+ * Classe de manipulation sur des services
+ * @author KHARAIM Nikita, LAHBIB Amani - Université de Caen Normandie, France
+ * @since january, 2016
+ */
 @Repository
 public class ServiceDAO implements IServiceDAO{
 	

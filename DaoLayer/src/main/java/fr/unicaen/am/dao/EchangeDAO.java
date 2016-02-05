@@ -12,12 +12,21 @@ import org.springframework.stereotype.Repository;
 import fr.unicaen.am.model.Cycle;
 import fr.unicaen.am.model.Echange;
 
+/**
+ * Classe de manipulation sur des échange
+ * @author LAHBIB Amani, KHARAIM Nikita - Université de Caen Normandie, France
+ * @since January, 2016
+ */
 @Repository
 public class EchangeDAO implements IEchangeDAO{
 	
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	/**
+	 * Récupération d'une session hibernate
+	 * @return
+	 */
 	private Session getCurrentSession() {
 		return sessionFactory.getCurrentSession();
 	}

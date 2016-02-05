@@ -4,6 +4,11 @@ import java.util.Collection;
 
 import domain.person.Person;
 
+/**
+ * Interface de manipulation sur un utilisateur de l'application
+ * @author KHARAIM Nikita, LAHBIB Amani - Université de Caen Normandie, France
+ * @since january, 2016
+ */
 public interface IUser {
 
 	/**

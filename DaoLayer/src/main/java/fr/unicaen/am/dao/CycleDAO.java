@@ -13,12 +13,25 @@ import fr.unicaen.am.model.Cycle;
 import fr.unicaen.am.model.User;
 import fr.unicaen.am.model.UserService;
 
+/**
+ * Classe responsable de cycles
+ * @author LAHBIB Amani, KHARAIM Nikita - Université de Caen Normandie, France
+ * @since January, 2016
+ * @see ICycleDAO
+ * @see Cycle
+ * @see UserService
+ * @see User
+ */
 @Repository
 public class CycleDAO implements ICycleDAO{
 	
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	/**
+	 * Initialisation d'une session hibernate
+	 * @return Instance de session hibernate
+	 */
 	private Session getCurrentSession() {
 		return sessionFactory.getCurrentSession();
 	}

@@ -18,6 +18,12 @@ import fr.unicaen.am.model.TypeService;
 import fr.unicaen.am.model.User;
 import fr.unicaen.am.model.UserRole;
 
+/**
+ * Classe de manipulation sur des utilisateur de l'application
+ * @author LAHBIB Amani, KHARAIM Nikita - Université de Caen Normandie, France
+ * @since January, 2016
+ * @see User
+ */
 @Repository
 public class PersonDAO extends SQLPersonDAO{
 	

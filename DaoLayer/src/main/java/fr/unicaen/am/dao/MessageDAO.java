@@ -14,6 +14,14 @@ import domain.person.Person;
 import fr.unicaen.am.model.Comment;
 import fr.unicaen.am.model.UserService;
 
+/**
+ * Classe de manimulation sur des commentaires de services
+ * @author KHARAIM Nikita, LAHBIB Amani - Université de Caen Normandie, France
+ * @since January, 2016
+ * @see IMesssageDAO
+ * @see Person
+ * @see UserService
+ */
 @Repository
 public class MessageDAO implements IMesssageDAO{
 

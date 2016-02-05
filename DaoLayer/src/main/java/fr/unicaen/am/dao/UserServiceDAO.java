@@ -16,6 +16,12 @@ import fr.unicaen.am.model.TypeService;
 import fr.unicaen.am.model.User;
 import fr.unicaen.am.model.UserService;
 
+/**
+ * Classe de manipulation sur les associations utilisateur-service
+ * @author LAHBIB Amani, KHARAIM Nikita - Université de Caen Normandie, France
+ * @since January, 2016
+ * @see UserService
+ */
 @Repository
 public class UserServiceDAO implements IUserServiceDAO {
 
